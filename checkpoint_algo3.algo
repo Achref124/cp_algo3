@@ -1,0 +1,65 @@
+
+PROCEDURE dot_product(v1,v2:ARRAY_OF INTEGER, dot:INTEGER)
+VAR
+    i: INTEGER;
+
+BEGIN
+    i:=0;
+    dot:=0;
+    WHILE (i<v1.length) DO
+        dot :=dot+(v1[i]*v2[i]);
+    END_WHILE
+END
+
+
+ALGORITHM Dot_product
+VAR
+    dot:INTEGER;
+    v1,v2:ARRAY_OF INTEGER[50];
+BEGIN
+    REPEAT
+        n1:=read.size();
+        n2:=read.size();
+    UNTIL (n1==n2)
+    read_array(n1,v1);
+    read_array(n2,v2);
+    dot_product(v1,v2);
+    IF (dot == 0) THEN
+        Write('v1 and v2 are orthogonal')
+    ELSE 
+        Write('v1 and v2 are not orthogonal')
+END
+
+
+//######## ALGORITHM USING FUNCTION#####//
+FUNCTION dot_product(v1,v2:ARRAY_OF INTEGER[50], dot:INTEGER):STRING
+VAR
+    i:INTEGER;
+BEGIN
+    i:=0;
+    dot:=0;
+    WHILE (i<v1.length) DO
+        dot :=dot+(v1[i]*v2[i]);
+    END_WHILE
+    IF (dot == 0) THEN
+        Return('v1 and v2 are orthogonal')
+    ELSE 
+        Return('v1 and v2 are not orthogonal')
+END
+
+
+ALGORITHM Dot_product
+VAR
+    dot:INTEGER;
+    v1,v2:ARRAY_OF INTEGER[50];
+    message:STRING;
+BEGIN
+    REPEAT
+        n1:=read.size();
+        n2:=read.size();
+    UNTIL (n1==n2)
+    read_array(n1,v1);
+    read_array(n2,v2);
+    message:=dot_product(v1,v2);
+    Write(message)
+END
